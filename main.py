@@ -43,8 +43,8 @@ def get_next_ticker():
     return ticker
 
 
-def run():
-    client = RESTClient(api_key="uAZtAwym4JxD3U9wTJfvlW3fx12XScLM")
+def run(api_key):
+    client = RESTClient(api_key=api_key)
 
     ticker = get_next_ticker()
 
@@ -61,4 +61,5 @@ def run():
             fp.write(f"\n{ticker}")
 
 if __name__ == "__main__":
-    run()
+    run("uAZtAwym4JxD3U9wTJfvlW3fx12XScLM")
+    run("gjwnimbmBf2p465awj1DI3ln4JkeJ6Re")
