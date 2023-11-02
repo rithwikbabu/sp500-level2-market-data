@@ -30,6 +30,7 @@ jobs:
           git config user.name "GitHub Actions Bot"
           git config user.email "<>"
           git add data/*  # Add all changes within the data folder
+          git add tickers_remaining.csv  # Remove added tickers
           if git diff --staged --quiet; then
             echo "No changes to commit"
           else
