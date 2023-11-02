@@ -38,7 +38,7 @@ def get_next_ticker():
     with open("tickers_remaining.csv", "w") as fp:
         fp.write("\n".join(tickers))
 
-    print(f"Removed {ticker} the tickers file.")
+    print(f"Removed {ticker} from the tickers file.")
 
     return ticker
 
@@ -63,3 +63,7 @@ def run(api_key):
 if __name__ == "__main__":
     run("uAZtAwym4JxD3U9wTJfvlW3fx12XScLM")
     run("gjwnimbmBf2p465awj1DI3ln4JkeJ6Re")
+    run("z2GQ7AO7fNpvVBCmIQLG62zYqWM8hQfD")
+    run("tDA3LP8fT0HJI6C3PxueJ2AKadA4kfk5")
+    run("dqAal6cWuOZHbhzvd4KpYVgWi8laKC6Y")
+    run("5Tc_bMLG_CrpFBYzmMBVjq0qnaL3UOvu")
