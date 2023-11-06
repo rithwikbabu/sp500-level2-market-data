@@ -1,6 +1,7 @@
 import time
 from polygon import RESTClient
 import pickle
+import os
 # uAZtAwym4JxD3U9wTJfvlW3fx12XScLM
 
 
@@ -59,11 +60,32 @@ def run(api_key):
 
         with open("tickers_remaining.csv", "a") as fp:
             fp.write(f"\n{ticker}")
+            
+def repair():
+    with open("sp500_tickers.csv", "r") as fp:
+        sp500 = set([line.strip() for line in fp if line.strip()])
+    with open("tickers_remaining.csv", "r") as fp:
+        tickers = set([line.strip() for line in fp if line.strip()])
+        
+    diff = sp500.difference(tickers) 
+    
+
+    data_folder = "data"
+
+    for ticker in diff:
+        filename = os.path.join(data_folder, f"{ticker}.pkl")
+        if not os.path.exists(filename):
+            print(f"{ticker}.pkl not found in {data_folder}")
+            
+    print("DONE")
+    
+        
 
 if __name__ == "__main__":
-    run("uAZtAwym4JxD3U9wTJfvlW3fx12XScLM")
-    run("gjwnimbmBf2p465awj1DI3ln4JkeJ6Re")
-    run("z2GQ7AO7fNpvVBCmIQLG62zYqWM8hQfD")
-    run("tDA3LP8fT0HJI6C3PxueJ2AKadA4kfk5")
-    run("dqAal6cWuOZHbhzvd4KpYVgWi8laKC6Y")
-    run("5Tc_bMLG_CrpFBYzmMBVjq0qnaL3UOvu")
+    repair()
+    # run("uAZtAwym4JxD3U9wTJfvlW3fx12XScLM")
+    # run("gjwnimbmBf2p465awj1DI3ln4JkeJ6Re")
+    # run("z2GQ7AO7fNpvVBCmIQLG62zYqWM8hQfD")
+    # run("tDA3LP8fT0HJI6C3PxueJ2AKadA4kfk5")
+    # run("dqAal6cWuOZHbhzvd4KpYVgWi8laKC6Y")
+    # run("5Tc_bMLG_CrpFBYzmMBVjq0qnaL3UOvu")
